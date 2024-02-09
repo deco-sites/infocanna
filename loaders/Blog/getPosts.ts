@@ -13,7 +13,7 @@ export interface Image {
   thumb: string;
 }
 
-const url = 'http://localhost:3000/posts';
+const url = "http://localhost:3000/posts";
 
 const loader = async (): Promise<PostResponse[] | null> => {
   try {

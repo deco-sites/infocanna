@@ -103,8 +103,8 @@ function BlogPosts({
       >
         <Slider class="carousel carousel-center sm:carousel-end row-start-2 row-end-5">
           {posts?.map((post, index) => {
-            console.log({ post })
-            return(
+            console.log({ post });
+            return (
               <Slider.Item
                 index={index}
                 class={`carousel-item  ${
@@ -113,9 +113,8 @@ function BlogPosts({
               >
                 <Card post={post} />
               </Slider.Item>
-            )
-          }
-          )}
+            );
+          })}
         </Slider>
 
         {layout?.showArrows && (
@@ -141,7 +140,7 @@ function BlogPosts({
 export const loader = (props: Props, req: Request) => {
   const { posts } = props;
 
-  console.log({posts})
+  console.log({ posts });
 
   return props;
 };
