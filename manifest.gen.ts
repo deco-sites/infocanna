@@ -90,8 +90,7 @@ const manifest = {
     "deco-sites/infocanna/sections/Miscellaneous/CookieConsent.tsx": $$$$$$36,
     "deco-sites/infocanna/sections/Miscellaneous/Slide.tsx": $$$$$$37,
     "deco-sites/infocanna/sections/Newsletter/Newsletter.tsx": $$$$$$43,
-    "deco-sites/infocanna/sections/Product/ImageGalleryFrontBack.tsx":
-      $$$$$$31,
+    "deco-sites/infocanna/sections/Product/ImageGalleryFrontBack.tsx": $$$$$$31,
     "deco-sites/infocanna/sections/Product/ImageGallerySlider.tsx": $$$$$$30,
     "deco-sites/infocanna/sections/Product/NotFound.tsx": $$$$$$34,
     "deco-sites/infocanna/sections/Product/NotFoundChallenge.tsx": $$$$$$26,
