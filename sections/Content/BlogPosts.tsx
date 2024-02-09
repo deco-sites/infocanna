@@ -10,7 +10,7 @@ import { PostResponse } from "$store/loaders/Blog/getPosts.ts";
 
 export interface Props {
   title?: string;
-  posts?: PostResponse[];
+  posts?: PostResponse[] | null;
   layout?: {
     numberOfSliders?: {
       mobile?: 1 | 2 | 3 | 4 | 5;
@@ -102,16 +102,20 @@ function BlogPosts({
         } px-6 container`}
       >
         <Slider class="carousel carousel-center sm:carousel-end row-start-2 row-end-5">
-          {posts?.map((post, index) => (
-            <Slider.Item
-              index={index}
-              class={`carousel-item  ${
-                slideDesktop[layout?.numberOfSliders?.desktop ?? 3]
-              } ${slideMobile[layout?.numberOfSliders?.mobile ?? 1]}`}
-            >
-              <Card post={post} />
-            </Slider.Item>
-          ))}
+          {posts?.map((post, index) => {
+            console.log({ post })
+            return(
+              <Slider.Item
+                index={index}
+                class={`carousel-item  ${
+                  slideDesktop[layout?.numberOfSliders?.desktop ?? 3]
+                } ${slideMobile[layout?.numberOfSliders?.mobile ?? 1]}`}
+              >
+                <Card post={post} />
+              </Slider.Item>
+            )
+          }
+          )}
         </Slider>
 
         {layout?.showArrows && (
