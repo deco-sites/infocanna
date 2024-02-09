@@ -5,10 +5,12 @@ import Header from "$store/components/ui/SectionHeader.tsx";
 import Slider from "$store/components/ui/Slider.tsx";
 import SliderJS from "$store/islands/SliderJS.tsx";
 import { useId } from "$store/sdk/useId.ts";
+import type { SectionProps } from "deco/types.ts";
+import { PostResponse } from "$store/loaders/Blog/getPosts.ts";
 
 export interface Props {
   title?: string;
-  posts?: Post[];
+  posts?: PostResponse[];
   layout?: {
     numberOfSliders?: {
       mobile?: 1 | 2 | 3 | 4 | 5;
@@ -18,16 +20,6 @@ export interface Props {
     headerfontSize?: "Normal" | "Large" | "Small";
     showArrows?: boolean;
   };
-}
-
-export interface Post {
-  href?: string;
-  image: ImageWidget;
-  alt?: string;
-  label?: string;
-  description?: string;
-  author?: string;
-  date?: string;
 }
 
 function BlogPosts({
@@ -41,39 +33,8 @@ function BlogPosts({
     headerfontSize: "Normal",
     showArrows: false,
   } as Props["layout"],
-  posts = [
-    {
-      href: "/",
-      image:
-        "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2291/80a115a2-3623-4e9b-aec7-42601c2ff416",
-      alt: "alternative text",
-      label: "Title Post",
-      description: "Description",
-      author: "Author",
-      date: "Date",
-    },
-    {
-      href: "/",
-      image:
-        "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2291/80a115a2-3623-4e9b-aec7-42601c2ff416",
-      alt: "alternative text",
-      label: "Title Post",
-      description: "Description",
-      author: "Author",
-      date: "Date",
-    },
-    {
-      href: "/",
-      image:
-        "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2291/80a115a2-3623-4e9b-aec7-42601c2ff416",
-      alt: "alternative text",
-      label: "Title Post",
-      description: "Description",
-      author: "Author",
-      date: "Date",
-    },
-  ],
-}: Props) {
+  posts,
+}: SectionProps<ReturnType<typeof loader>>) {
   const id = useId();
 
   if (!posts || posts.length === 0) {
@@ -95,26 +56,30 @@ function BlogPosts({
     5: "w-1/5",
   };
 
-  const Card = ({ post }: { post: Post }) => (
-    <a href={post.href} class="block px-3">
+  const Card = ({ post }: { post: PostResponse }) => (
+    <a href={`/post/${post._id}`} class="block px-3">
       <article class="flex flex-col">
         <figure class="w-full">
           <Image
             class="w-full object-cover"
-            src={post.image}
-            alt={post.alt}
+            src={post.images[0].thumb}
+            alt={""}
             width={442}
             height={266}
           />
-          <figcaption class="text-2xl mt-4 font-light">{post.label}</figcaption>
+          <figcaption class="text-2xl mt-4 font-light">
+            {post.category}
+          </figcaption>
         </figure>
         <div class="flex flex-col gap-1">
-          <p class="text-base font-light pb-14 pt-2">{post.description}</p>
+          <p class="text-base font-light pb-14 pt-2">
+            {post.content.slice(0, 140)}
+          </p>
           <div class="flex items-center justify-between">
             <p class="font-light text-xs">
-              {post.author}
+              Autor: Admin
             </p>
-            <p class="font-light text-xs">{post.date}</p>
+            <p class="font-light text-xs">{post.created_at}</p>
           </div>
         </div>
       </article>
@@ -168,5 +133,13 @@ function BlogPosts({
     </div>
   );
 }
+
+export const loader = (props: Props, req: Request) => {
+  const { posts } = props;
+
+  console.log({posts})
+
+  return props;
+};
 
 export default BlogPosts;

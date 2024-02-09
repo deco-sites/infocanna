@@ -2,8 +2,10 @@
 // This file SHOULD be checked into source version control.
 // This file is automatically updated during development when running `dev.ts`.
 
-import * as $$$0 from "./loaders/Layouts/ProductCard.tsx";
-import * as $$$1 from "./loaders/List/Sections.tsx";
+import * as $$$0 from "./loaders/Blog/getPost.ts";
+import * as $$$1 from "./loaders/Blog/getPosts.ts";
+import * as $$$2 from "./loaders/Layouts/ProductCard.tsx";
+import * as $$$3 from "./loaders/List/Sections.tsx";
 import * as $$$$$$0 from "./sections/Gallery.tsx";
 import * as $$$$$$1 from "./sections/Footer/Footer.tsx";
 import * as $$$$$$2 from "./sections/Category/CategoryBanner.tsx";
@@ -54,8 +56,10 @@ import * as $$$$$$$$$$$1 from "./apps/site.ts";
 
 const manifest = {
   "loaders": {
-    "deco-sites/infocanna/loaders/Layouts/ProductCard.tsx": $$$0,
-    "deco-sites/infocanna/loaders/List/Sections.tsx": $$$1,
+    "deco-sites/infocanna/loaders/Blog/getPost.ts": $$$0,
+    "deco-sites/infocanna/loaders/Blog/getPosts.ts": $$$1,
+    "deco-sites/infocanna/loaders/Layouts/ProductCard.tsx": $$$2,
+    "deco-sites/infocanna/loaders/List/Sections.tsx": $$$3,
   },
   "sections": {
     "deco-sites/infocanna/sections/Animation/Animation.tsx": $$$$$$13,

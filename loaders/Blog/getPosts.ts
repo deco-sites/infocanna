@@ -1,9 +1,9 @@
-
 export interface PostResponse {
   _id: string;
   category: string;
   content: string;
   images: Image[];
+  created_at: Date;
 }
 
 export interface Image {
@@ -13,15 +13,11 @@ export interface Image {
   thumb: string;
 }
 
-const url =
-  "https://localhost:3000/posts";
-
+const url = 'https://localhost:3000/posts';
 
 const loader = async (): Promise<PostResponse[] | null> => {
   try {
-    const response = (await fetch(
-        url,
-      ).then((r) => r.json())) as PostResponse[];
+    const response = (await fetch(url).then((r) => r.json())) as PostResponse[];
     return response;
   } catch (e) {
     console.log({ err: e });
